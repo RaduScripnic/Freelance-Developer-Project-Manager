@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Login - CodeConnect{% endblock %}
+
+{% block content %}
+<div class="flex flex-col items-center justify-center min-h-[70vh]">
+    <div class="w-full max-w-md bg-white p-8 rounded-xl shadow-2xl border border-gray-100">
+        <h2 class="text-3xl font-extrabold text-gray-900 mb-6 text-center">
+            Sign In to CodeConnect
+        </h2>
+        <p class="text-center text-sm text-gray-600 mb-8">
+            Access your projects and client management tools.
+        </p>
+
+        <form method="post" novalidate>
+            {% csrf_token %}
+            
+            <!-- Use the default Django AuthenticationForm, rendered by crispy -->
+            {{ form|crispy }}
+            
+            <button type="submit" 
+                class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out mt-4">
+                Log In
+            </button>
+            
+            <!-- Add a hidden next field if present to redirect correctly after login -->
+            {% if next %}
+                <input type="hidden" name="next" value="{{ next }}" />
+            {% endif %}
+        </form>
+
+        <div class="mt-6 text-center">
+            <p class="text-sm text-gray-600">
+                Don't have an account? 
+                <a href="{% url 'accounts:signup_freelancer' %}" class="font-medium text-indigo-600 hover:text-indigo-500">
+                    Sign up as a Freelancer
+                </a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock content %}
