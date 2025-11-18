@@ -1,4 +1,4 @@
-#!/Users/raduscripnic/Documents/GitHub/Freelance-Developer-Project-Manager/.venv/bin/python3.12
+#!/Users/raduscripnic/Documents/GitHub/Freelance_Developer_Project_Manager/.venv/bin/python3.12
 # -*- coding: utf-8 -*-
 import re
 import sys

@@ -43,7 +43,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'codeconnect_project.urls'
+ROOT_URLCONF = 'core.urls'
 
 TEMPLATES = [
     {
@@ -61,8 +61,8 @@ TEMPLATES = [
         },
     },
 ]
+WSGI_APPLICATION = 'core.wsgi.application'
 
-WSGI_APPLICATION = 'codeconnect_project.wsgi.application'
 
 
 # Database

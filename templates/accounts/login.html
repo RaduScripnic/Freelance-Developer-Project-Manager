@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Login - CodeConnect{% endblock %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="col-md-5">
+
+        <div class="card shadow-lg border-0 rounded-4">
+            <div class="card-body p-5">
+
+                <h3 class="text-center mb-4 fw-bold text-primary">Sign In to CodeConnect</h3>
+                <p class="text-center text-muted mb-4">Manage your projects, clients, and workflow.</p>
+
+                <form method="POST" novalidate>
+                    {% csrf_token %}
+                    {{ form|crispy }}
+
+                    <button type="submit" class="btn btn-primary w-100 py-2 mt-2 fw-semibold">
+                        Log In
+                    </button>
+
+                    {% if next %}
+                        <input type="hidden" name="next" value="{{ next }}">
+                    {% endif %}
+                </form>
+
+                <div class="text-center mt-4">
+                    <p class="text-muted">
+                        Don't have an account?
+                        <a href="{% url 'accounts:signup_freelancer' %}" class="fw-semibold text-primary text-decoration-none">
+                            Sign up as a Freelancer
+                        </a>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

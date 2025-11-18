@@ -1,56 +1,28 @@
-{% load static %}
-{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}CodeConnect{% endblock %}</title>
-    <!-- Tailwind CSS (for quick, responsive styling) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* Use Inter font */
-        body { font-family: 'Inter', sans-serif; }
-    </style>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
-<body class="bg-gray-50 min-h-screen flex flex-col">
+<body>
 
-    <header class="bg-white shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <a href="{% url 'dashboard' %}" class="text-2xl font-bold text-indigo-600">CodeConnect</a>
-            <nav>
-                {% if user.is_authenticated %}
-                    <span class="text-sm text-gray-600 mr-4">Welcome, {{ user.username }}!</span>
-                    <a href="{% url 'accounts:logout' %}" class="text-indigo-600 hover:text-indigo-800 transition duration-150 ease-in-out">Logout</a>
-                {% else %}
-                    <a href="{% url 'accounts:login' %}" class="text-indigo-600 hover:text-indigo-800 transition duration-150 ease-in-out mr-4">Login</a>
-                    <a href="{% url 'accounts:signup_freelancer' %}" class="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-indigo-700 transition duration-150 ease-in-out">Sign Up</a>
-                {% endif %}
-            </nav>
-        </div>
-    </header>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
+    <div class="container">
+        <a class="navbar-brand" href="/">CodeConnect</a>
+    </div>
+</nav>
 
-    <main class="flex-grow">
-        {% if messages %}
-            <div class="max-w-xl mx-auto mt-4 px-4">
-                {% for message in messages %}
-                    <div class="rounded-lg p-3 text-sm {% if message.tags %}bg-blue-100 text-blue-700{% endif %}" role="alert">
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            </div>
-        {% endif %}
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            {% block content %}
-                <!-- Content will be injected here -->
-            {% endblock content %}
-        </div>
-    </main>
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
 
-    <footer class="bg-gray-200 text-gray-600 text-center py-3 text-sm">
-        &copy; 2025 CodeConnect - Freelancer SaaS
-    </footer>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

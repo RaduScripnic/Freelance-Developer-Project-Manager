@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
@@ -6,8 +6,7 @@ import sys
 
 def main():
     """Run administrative tasks."""
-    # NOTE: 'codeconnect_project.settings' matches your configuration folder name
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'codeconnect_project.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
